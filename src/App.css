@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-color: #f0f4f8;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.App {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1.app-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4a90e2;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.city-search {
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.city-search:focus {
+  border-color: #4a90e2;
+}
+
+/* Loading Spinner */
+.Oval {
+  margin: 20px auto;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  font-size: 18px;
+  margin: 20px;
+}
+
+.error-message svg {
+  margin-right: 10px;
+}
+
+.error-message span {
+  font-weight: bold;
+}
+
+/* Weather Information */
+h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+span {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+img {
+  margin: 20px 0;
+}
+
+p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+p:last-child {
+  font-weight: bold;
 }
