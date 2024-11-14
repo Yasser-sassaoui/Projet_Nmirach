@@ -1,97 +1,83 @@
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+/* App.css */
 
-body {
-  background-color: #f0f4f8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
+/* General Styles */
 .App {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 100%;
-  max-width: 400px;
+  font-family: 'Arial', sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1.app-name {
-  font-size: 24px;
-  font-weight: bold;
-  color: #4a90e2;
+/* Title */
+.app-name {
+  font-size: 2rem;
+  color: #333;
   margin-bottom: 20px;
 }
 
+/* Search Bar */
 .search-bar {
   margin-bottom: 20px;
 }
 
 .city-search {
-  padding: 10px;
   width: 80%;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  outline: none;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
 .city-search:focus {
-  border-color: #4a90e2;
+  outline: none;
+  border-color: #007bff;
 }
 
-/* Loading Spinner */
+/* Loader */
 .Oval {
   margin: 20px auto;
 }
 
-/* Error message */
+/* Error Message */
 .error-message {
-  color: red;
-  font-size: 18px;
-  margin: 20px;
-}
-
-.error-message svg {
-  margin-right: 10px;
-}
-
-.error-message span {
-  font-weight: bold;
-}
-
-/* Weather Information */
-h2 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-span {
-  color: #777;
-  font-size: 16px;
-  margin-bottom: 10px;
-  display: block;
-}
-
-img {
+  color: #ff4d4d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
   margin: 20px 0;
 }
 
-p {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 10px;
+.error-message svg {
+  margin-right: 8px;
 }
 
-p:last-child {
-  font-weight: bold;
+/* Weather Data */
+h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+img {
+  margin: 15px 0;
+  width: 80px;
+  height: 80px;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+span {
+  font-size: 1rem;
+  display: block;
+  margin: 10px 0;
+  color: #777;
 }
