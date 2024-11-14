@@ -1,13 +1,124 @@
+/* Corps de la page */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7; /* Ajout d'un fond léger pour un meilleur contraste */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Style du champ de recherche */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.city-search {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+  margin-right: 10px; /* Espacement entre la barre de recherche et le bouton */
+}
+
+.city-search:focus {
+  outline: none;
+  border-color: #5e9bff; /* Changer la couleur de la bordure quand l'input est sélectionné */
+}
+
+/* Bouton "Ajouter aux favoris" */
+.favorite-btn {
+  padding: 10px 15px;
+  background-color: #ff9f00; /* Couleur distincte pour attirer l'attention */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.favorite-btn:hover {
+  background-color: #e68900; /* Assombrir légèrement lors du survol */
+}
+
+/* Style pour l'affichage de la liste des villes favorites */
+.favorite-cities {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.favorite-cities li {
+  font-size: 18px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.favorite-cities li:hover {
+  background-color: #e6f7ff; /* Changer la couleur de fond lors du survol */
+}
+
+.favorite-cities li:active {
+  background-color: #cceeff; /* Changer la couleur quand l'élément est cliqué */
+}
+
+/* Loader (indicateur de chargement) */
+.Oval {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* Messages d'erreur */
+.error-message {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+}
+
+.error-message .fa-frown {
+  margin-right: 8px;
+}
+
+/* Style pour l'affichage de la météo */
+h2 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.forecast-container {
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.forecast-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.forecast-card {
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-card img {
+  max-width: 50px;
+  margin-bottom: 10px;
 }

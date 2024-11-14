@@ -1,5 +1,5 @@
 import { Oval } from 'react-loader-spinner'; // Importation d'un loader pour l'affichage du chargement
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Importation d'axios pour faire des requêtes HTTP
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Pour afficher des icônes
 import { faFrown } from '@fortawesome/free-solid-svg-icons'; // Importation d'une icône de tristesse
@@ -14,6 +14,7 @@ function Grp204WeatherApp() {
     forecast: null, // Ajout de l'état pour les prévisions météo
     error: false,
   });
+  const [favorites, setFavorites] = useState([]); // État pour gérer les villes favorites
 
   // Fonction pour formater la date
   const toDateFunction = () => {
@@ -29,7 +30,6 @@ function Grp204WeatherApp() {
   const search = async (event) => {
     if (event.key === 'Enter') {
       event.preventDefault(); // Empêche le comportement par défaut du formulaire
-      setInput(''); // Réinitialise la saisie de l'utilisateur
       setWeather({ ...weather, loading: true }); // Déclenche le chargement
 
       // Appel à l'API OpenWeatherMap pour récupérer les données de la météo actuelle
@@ -71,6 +71,27 @@ function Grp204WeatherApp() {
     }
   };
 
+  // Fonction pour ajouter une ville aux favoris
+  const addToFavorites = () => {
+    if (weather.data.name && !favorites.includes(weather.data.name)) {
+      const updatedFavorites = [...favorites, weather.data.name];
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites)); // Sauvegarde dans localStorage
+    }
+  };
+
+  // Fonction pour récupérer les villes favorites depuis localStorage au chargement de l'application
+  useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(savedFavorites);
+  }, []);
+
+  // Fonction pour rechercher une ville depuis la liste des favoris
+  const searchFromFavorites = async (city) => {
+    setInput(city);
+    await search({ key: 'Enter' });
+  };
+
   return (
     <div className="App">
       <h1 className="app-name">Application Météo grp204</h1>
@@ -85,13 +106,16 @@ function Grp204WeatherApp() {
           onChange={(event) => setInput(event.target.value)}
           onKeyPress={search} // Déclenche la recherche lorsqu'on appuie sur "Entrée"
         />
+        <button onClick={addToFavorites}>Ajouter aux favoris</button> {/* Bouton pour ajouter aux favoris */}
       </div>
+
       {/* Affichage du loader pendant le chargement */}
       {weather.loading && (
         <>
           <Oval type="Oval" color="black" height={100} width={100} />
         </>
       )}
+
       {/* Affichage d'un message d'erreur si la ville n'est pas trouvée */}
       {weather.error && (
         <>
@@ -101,6 +125,7 @@ function Grp204WeatherApp() {
           </span>
         </>
       )}
+
       {/* Affichage des informations météo actuelles */}
       {weather && weather.data && weather.data.main && (
         <div>
@@ -112,6 +137,7 @@ function Grp204WeatherApp() {
           <p>Vitesse du vent : {weather.data.wind.speed} m/s</p>
         </div>
       )}
+
       {/* Affichage des prévisions météo */}
       {weather.forecast && (
         <div className="forecast-container">
@@ -129,6 +155,16 @@ function Grp204WeatherApp() {
           </div>
         </div>
       )}
+
+      {/* Affichage des villes favorites */}
+      <div className="favorites-container">
+        <h3>Villes Favorites</h3>
+        <ul>
+          {favorites.map((city, index) => (
+            <li key={index} onClick={() => searchFromFavorites(city)}>{city}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
